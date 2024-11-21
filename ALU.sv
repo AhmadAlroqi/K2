@@ -12,11 +12,11 @@ module ALU# (parameter N = 8)(
     logic [N-1:0]bcomp;
     logic [N-1:0]b2sout;
     
-    assign bcomp= ~b+1;
+    assign bcomp= ~b + 1;
            
     MUX #(.N(N)) b2comp(
-    .a(b),
-    .b(bcomp),
+    .a(bcomp),
+    .b(b),
     .s(op),
     .y(b2sout)
     );

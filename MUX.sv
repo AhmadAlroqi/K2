@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
- module MUX # (parameter N = 4)
+ module MUX # (parameter N = 8)
  (
     input logic [N-1:0] a,   
     input logic [N-1:0] b,   
@@ -10,17 +10,17 @@
 
     always @(*) begin
         if (s)
-            y = b;               
+            y = a;               
         else
-            y = a;              
+            y = b;              
     end
 
 endmodule
 
-/*MUX #(.WIDTH(3)) my_mux (
+/*MUX #(.N(3)) my_mux (
     .a(a[3:0]),
     .b(b[3:0]),
-    .sel(sel),
+    .s(s),
     .y(y[3:0])
 );
 */

@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module Register #(
-    parameter N = 4         
+    parameter N = 8         
 )(
     input logic clk,             
     input logic reset_n,             
@@ -20,9 +20,9 @@ module Register #(
 endmodule
 
 /*
-Register #(.WIDTH(4)) my_register (
+Register #(.N(4)) my_register (
     .clk(clk),
-    .rst(rst),
+    .reset_n(reset_n),
     .en(en),
     .d(d[3:0]),
     .q(q[3:0])
