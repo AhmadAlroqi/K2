@@ -19,5 +19,9 @@ out_carry<=0;
 else if (en==1)
 out_carry<=in_carry;
 end     
+    logic w1,w1;
+    
+    assign w1=out_carry & c;
+    assign  w2=w1^j;
     
 endmodule
