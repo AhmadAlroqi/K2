@@ -18,6 +18,7 @@ module K2TOP(
     logic alu_carry;
     logic w1,w2;
     logic out_carry;
+    logic zero;
 
     
     n_counter #(.n(8)) pc_inst (
@@ -28,7 +29,14 @@ module K2TOP(
         .load_data({5'b0,data}),          
         .count(pc)
     );
-       
+    
+   /* RAM RAM1(.clk(clk),
+    .write_enable(en),
+    .address(),
+    .data_in(),
+    .data_out()
+   );
+    */   
     ROM rom1(
     .address(pc),
     .data(instruction)
@@ -91,12 +99,15 @@ module K2TOP(
         .out_carry(out_carry)
     );
     
+    Zero_Flag (
+    .clk(clk),
+    .reset_n(reset_n),
+    .en(en),
+    .in_zero(alu_result),
+    .out_zero(zero));
+    
     assign w1= out_carry & C;
-    assign  w2 = w1 | J ;
-    
-    
-
-    
+    assign  w2 = w1 | J | zero ;
     
     
     
